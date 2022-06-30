@@ -4,14 +4,18 @@ import { ethers } from 'ethers'
 import { contract, provider, Network } from '~/composables/crossbell'
 
 const store = useStore()
-const { address, isConnect, hasProfile, isMainnet } = storeToRefs(store)
+const { address, hasProfile, isMainnet } = storeToRefs(store)
 const router = useRouter()
 
-if (!isConnect.value) await contract.connect().then(() => { isConnect.value = true })
 if (!isMainnet.value)
   await Network.switchToCrossbellMainnet(provider).then(() => { isMainnet.value = true })
 if (hasProfile.value) router.push('/write')
-if (!hasProfile.value) router.push('/profile')
+if (!hasProfile.value) {
+  await contract.existsProfileForAddress(address.value).then(async(bool) => {
+    await(hasProfile.value = bool.data)
+    if (!hasProfile.value) router.push('/profile')
+  })
+}
 
 async function connect() {
   const provider = new ethers.providers.Web3Provider(window.ethereum)
