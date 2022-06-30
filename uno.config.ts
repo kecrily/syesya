@@ -2,6 +2,7 @@ import {
   defineConfig,
   presetAttributify,
   presetIcons,
+  presetTypography,
   presetUno,
   transformerDirectives,
   transformerVariantGroup,
@@ -14,6 +15,9 @@ export default defineConfig({
     presetIcons({
       prefix: '',
       scale: 1.2,
+    }),
+    presetTypography({
+      selectorName: 'markdown-body',
     }),
   ],
   transformers: [

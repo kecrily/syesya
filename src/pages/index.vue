@@ -7,10 +7,10 @@ const store = useStore()
 const { address, hasProfile, isMainnet } = storeToRefs(store)
 const router = useRouter()
 
-if (!isMainnet.value)
+if (!isMainnet.value && address.value)
   await Network.switchToCrossbellMainnet(provider).then(() => { isMainnet.value = true })
 if (hasProfile.value) router.push('/write')
-if (!hasProfile.value) {
+if (!hasProfile.value && address.value) {
   await contract.existsProfileForAddress(address.value).then(async(bool) => {
     await(hasProfile.value = bool.data)
     if (!hasProfile.value) router.push('/profile')
