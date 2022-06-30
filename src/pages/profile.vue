@@ -19,6 +19,7 @@ await contract.getBalance(address.value).then(result => {
 })
 
 async function createProfile() {
+  await contract.connect()
   await contract.createProfile(form.address, form.handle, form.avatar).then((result) => {
     data = result.data
     hasProfile.value = true
@@ -94,8 +95,3 @@ async function createProfile() {
     </a-button>
   </template>
 </template>
-
-<route lang="yaml">
-meta:
-  layout: home
-</route>

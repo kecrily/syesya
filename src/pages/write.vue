@@ -6,7 +6,6 @@ import { useStore } from '~/stores/wallet'
 
 const store = useStore()
 const { address } = storeToRefs(store)
-const router = useRouter()
 
 const plugins = [gfm()]
 let content = $ref('')
@@ -23,6 +22,8 @@ await indexer.getProfiles(address.value).then((res) => { listProfiles = res.list
 let transactionHash = $ref('')
 let noteId = $ref('')
 async function publish() {
+  await contract.connect()
+
   await contract.postNote(selectProfile, { title, content, tags }, { locked })
     .then((res) => {
       transactionHash = res.transactionHash
@@ -83,8 +84,3 @@ div {
   display: block;
 }
 </style>
-
-<route lang="yaml">
-meta:
-  layout: home
-</route>

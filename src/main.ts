@@ -8,7 +8,6 @@ import App from './App.vue'
 
 import 'uno.css'
 import '@unocss/reset/antfu.css'
-import { contract } from './composables/crossbell'
 
 const app = createApp(App)
 const routes = setupLayouts(generatedRoutes)
@@ -22,5 +21,3 @@ pinia.use(piniaPersist)
 app.use(router)
 app.use(pinia)
 app.mount('#app')
-
-await contract.connect()

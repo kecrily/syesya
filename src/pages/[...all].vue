@@ -13,8 +13,3 @@
     </a-button>
   </a-space>
 </template>
-
-<route lang="yaml">
-meta:
-  layout: home
-</route>

@@ -10,6 +10,7 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "skipLibCheck": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "lib": [
