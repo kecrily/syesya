@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Editor } from '@bytemd/vue-next'
 import gfm from '@bytemd/plugin-gfm'
-import { contract, indexer, ProfileEntity } from '~/composables/crossbell'
+import { CharacterEntity, contract, indexer } from '~/composables/crossbell'
 import { useStore } from '~/stores/wallet'
 
 const store = useStore()
@@ -15,16 +15,16 @@ const title = $ref('')
 const tags: string[] = $ref()
 const locked = $ref(false)
 
-let listProfiles: ProfileEntity[] = $ref()
-const selectProfile = $ref('')
-await indexer.getProfiles(address.value).then((res) => { listProfiles = res.list })
+let listCharacters: CharacterEntity[] = $ref()
+const selectCharacter = $ref('')
+await indexer.getCharacters(address.value).then((res) => { listCharacters = res.list })
 
 let transactionHash = $ref('')
-let noteId = $ref('')
+let noteId: number = $ref()
 async function publish() {
   await contract.connect()
 
-  await contract.postNote(selectProfile, { title, content, tags }, { locked })
+  await contract.postNote(selectCharacter, { title, content, tags }, { locked })
     .then((res) => {
       transactionHash = res.transactionHash
       noteId = res.data.noteId
@@ -49,8 +49,8 @@ async function publish() {
             Locked
           </a-checkbox>
 
-          <a-select v-model="selectProfile" placeholder="Select profile" style="width: 16rem">
-            <a-option v-for="i of listProfiles" :key="i.profileId" :value="i.profileId">
+          <a-select v-model="selectCharacter" placeholder="Select character" style="width: 16rem">
+            <a-option v-for="i of listCharacters" :key="i.characterId" :value="i.characterId">
               {{ i.handle }}
             </a-option>
           </a-select>

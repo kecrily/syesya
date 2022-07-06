@@ -3,7 +3,7 @@ import { contract } from '~/composables/crossbell'
 import { useStore } from '~/stores/wallet'
 
 const store = useStore()
-const { hasProfile, address } = storeToRefs(store)
+const { hasCharacter, address } = storeToRefs(store)
 
 const form = reactive({
   address: address.value,
@@ -11,33 +11,33 @@ const form = reactive({
   avatar: '',
 })
 
-let data = $ref('')
+let data:number = $ref()
 let balance = $ref('')
 
 await contract.getBalance(address.value).then(result => {
   balance = result.data
 })
 
-async function createProfile() {
+async function createCharacter() {
   await contract.connect()
-  await contract.createProfile(form.address, form.handle, form.avatar).then((result) => {
+  await contract.createCharacter(form.address, form.handle, form.avatar).then((result) => {
     data = result.data
-    hasProfile.value = true
+    hasCharacter.value = true
   })
 }
 </script>
 
 <template>
-  <template v-if="!hasProfile">
+  <template v-if="!hasCharacter">
     <div class="mb-10">
       <div class="font-bold text-xl">
-        You need to create a profile before writing.
+        You need to create a character before writing.
       </div>
 
       <template v-if="Number(balance) < 0.002">
         <div class="mt-2">
           <div class="block">
-            You only have <b>{{ balance }} $CSB</b>, which may not be enough to complete the profile creation.
+            You only have <b>{{ balance }} $CSB</b>, which may not be enough to complete the character creation.
           </div>
           <a-link href="https://faucet.crossbell.io/">
             Get some from Crossbell Faucet.
@@ -46,7 +46,7 @@ async function createProfile() {
       </template>
     </div>
 
-    <a-form v-if="!data" :model="form" auto-label-width @submit="createProfile">
+    <a-form v-if="!data" :model="form" auto-label-width @submit="createCharacter">
       <a-form-item field="address" label="Address" required hide-asterisk disabled>
         <a-input v-model="form.address" placeholder="your wallet address" />
       </a-form-item>
@@ -58,7 +58,7 @@ async function createProfile() {
           { maxLength: 31, message: 'Handle must be at most 31 characters' },
         ]"
       >
-        <a-input v-model="form.handle" placeholder="your profile handle" />
+        <a-input v-model="form.handle" placeholder="your character handle" />
       </a-form-item>
 
       <a-form-item

@@ -1,7 +1,7 @@
 export const useStore = defineStore('wallet', {
   state: () => ({
     address: '',
-    hasProfile: false,
+    hasCharacter: false,
     isMainnet: false,
   }),
   persist: {

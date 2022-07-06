@@ -1,13 +1,19 @@
 <script setup lang="ts">
 import { useStore } from '~/stores/wallet'
 import { ethers } from 'ethers'
-import { contract, provider, Network } from '~/composables/crossbell'
+import { contract, Network } from '~/composables/crossbell'
 
 const store = useStore()
-const { address, hasProfile, isMainnet } = storeToRefs(store)
+const { address, hasCharacter, isMainnet } = storeToRefs(store)
 const router = useRouter()
 
-if (hasProfile.value) router.push('/write')
+function goWhere() {
+  if (!hasCharacter.value)
+    router.push('/character')
+  else router.push('/write')
+}
+
+await goWhere()
 
 async function connect() {
   await contract.connect()
@@ -16,14 +22,14 @@ async function connect() {
   const signer = provider.getSigner()
   if (!address.value)
     address.value = await signer.getAddress()
-  if (!hasProfile.value) {
-    await contract.existsProfileForAddress(address.value).then(async(bool) => {
-      await(hasProfile.value = bool.data)
-      if (!hasProfile.value) router.push('/profile')
-    })
-  }
   if (!isMainnet.value)
     await Network.switchToCrossbellMainnet(provider).then(() => { isMainnet.value = true })
+  if (!hasCharacter.value) {
+    await contract.existsCharacterForAddress(address.value).then(async(bool) => {
+      await(hasCharacter.value = bool.data)
+      goWhere()
+    })
+  }
 }
 </script>
 
