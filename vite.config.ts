@@ -21,6 +21,7 @@ export default defineConfig({
       imports: ['vue', 'vue/macros', 'pinia', 'vue-router'],
       dts: 'src/types/auto-imports.d.ts',
       resolvers: [ArcoResolver()],
+      dirs: ['src/composables'],
     }),
     Components({
       dts: 'src/types/components.d.ts',

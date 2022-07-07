@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { Editor } from '@bytemd/vue-next'
 import gfm from '@bytemd/plugin-gfm'
-import { CharacterEntity, contract, indexer } from '~/composables/crossbell'
 import { useStore } from '~/stores/wallet'
+import { CharacterEntity } from '~/composables/crossbell'
 
 const store = useStore()
 const { address } = storeToRefs(store)
