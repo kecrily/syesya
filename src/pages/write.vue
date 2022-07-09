@@ -2,7 +2,7 @@
 import { Editor } from '@bytemd/vue-next'
 import gfm from '@bytemd/plugin-gfm'
 import { useStore } from '~/stores/wallet'
-import { CharacterEntity } from '~/composables/crossbell'
+import type { CharacterEntity } from '~/composables/crossbell'
 
 const store = useStore()
 const { address } = storeToRefs(store)

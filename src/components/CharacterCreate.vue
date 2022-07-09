@@ -10,7 +10,7 @@ const form = reactive({
   avatar: '',
 })
 
-let data:number = $ref()
+let data: number = $ref()
 
 async function createCharacter() {
   await contract.connect()

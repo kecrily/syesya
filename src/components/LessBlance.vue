@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const props = defineProps<{address: string}>()
+const props = defineProps<{ address: string }>()
 
 let balance = $ref('')
 
-await contract.getBalance(props.address).then(result => {
+await contract.getBalance(props.address).then((result) => {
   balance = result.data
 })
 </script>

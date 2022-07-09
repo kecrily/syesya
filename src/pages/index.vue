@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useStore } from '~/stores/wallet'
 import { ethers } from 'ethers'
+import { useStore } from '~/stores/wallet'
 import { Network } from '~/composables/crossbell'
 
 const store = useStore()
