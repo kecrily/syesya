@@ -8,9 +8,10 @@ const { address, hasCharacter, isMainnet } = storeToRefs(store)
 const router = useRouter()
 
 function goWhere() {
-  if (!hasCharacter.value)
-    router.push('/character')
-  else router.push('/write')
+  if (address.value) {
+    if (hasCharacter.value) router.push('/write')
+    else router.push('/character/create')
+  }
 }
 
 await goWhere()
@@ -27,7 +28,7 @@ async function connect() {
   if (!hasCharacter.value) {
     await contract.existsCharacterForAddress(address.value).then(async(bool) => {
       await(hasCharacter.value = bool.data)
-      goWhere()
+      await goWhere()
     })
   }
 }
@@ -45,3 +46,8 @@ async function connect() {
     Connect Wallet
   </a-button>
 </template>
+
+<route lang="yaml">
+meta:
+  layout: pain
+</route>
