@@ -19,6 +19,7 @@ declare module '@vue/runtime-core' {
     AOption: typeof import('@arco-design/web-vue')['Option']
     ASelect: typeof import('@arco-design/web-vue')['Select']
     ASpace: typeof import('@arco-design/web-vue')['Space']
+    ATag: typeof import('@arco-design/web-vue')['Tag']
     CharacterCreate: typeof import('./../components/CharacterCreate.vue')['default']
     LessBalance: typeof import('./../components/LessBalance.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

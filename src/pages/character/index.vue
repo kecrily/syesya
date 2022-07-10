@@ -1,0 +1,39 @@
+<script setup lang="ts">
+import type { CharacterEntity } from '~/composables/crossbell'
+import { useStore } from '~/stores/wallet'
+
+const store = useStore()
+const { address } = storeToRefs(store)
+
+let characters: CharacterEntity[] = $ref()
+
+await indexer.getCharacters(address.value).then((res) => {
+  characters = res.list
+})
+</script>
+
+<template>
+  <a-card v-for="c in characters" :key="c.handle" hoverable class="mb-4">
+    <div class="flex flex-row items-center">
+      <a-avatar v-if="c.uri">
+        <img alt="avatar" :src="c.uri">
+      </a-avatar>
+      <div class="ml-2 text-xl">
+        @{{ c.handle }}
+      </div>
+      <a-link class="ml-6" :href="c.characterId.toString()">
+        View
+      </a-link>
+      <a-link>
+        Edit
+      </a-link>
+    </div>
+  </a-card>
+
+  <a-button
+    type="primary"
+    href="create"
+  >
+    Create New Character
+  </a-button>
+</template>
