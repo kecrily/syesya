@@ -13,16 +13,12 @@ data = await indexer.getCharacter(BigNumber.from(props.id))
     {{ data?.metadata?.content.name }}
   </h1>
   <div class="opacity-80">
-    {{ data?.metadata?.content.description || data?.metadata?.content.bio }}
+    {{ data?.metadata?.content.bio }}
   </div>
 
   <div class="flex flex-row space-x-2 mt-2">
     <a-tag>
       @{{ data?.handle }}
-    </a-tag>
-
-    <a-tag v-for="a in data?.metadata?.content.attributes" :key="a.trait_type">
-      {{ a.trait_type }}: {{ a.value }}
     </a-tag>
   </div>
 </template>
