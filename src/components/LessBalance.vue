@@ -3,9 +3,7 @@ const props = defineProps<{ address: string }>()
 
 let balance: string = $ref()
 
-await contract.getBalance(props.address).then((result) => {
-  balance = result.data
-})
+balance = (await contract.getBalance(props.address)).data
 </script>
 
 <template v-if="Number(balance) < 0.002">

@@ -7,9 +7,7 @@ const { address } = storeToRefs(store)
 
 let characters: CharacterEntity[] = $ref()
 
-await indexer.getCharacters(address.value).then((res) => {
-  characters = res.list
-})
+characters = (await indexer.getCharacters(address.value)).list
 </script>
 
 <template>

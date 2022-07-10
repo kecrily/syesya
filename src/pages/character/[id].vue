@@ -4,9 +4,8 @@ import type { CharacterEntity } from '~/composables/crossbell'
 
 const props = defineProps<{ id: number|string }>()
 let data: CharacterEntity|null = $ref()
-await indexer.getCharacter(BigNumber.from(props.id)).then((res) => {
-  data = res
-})
+
+data = await indexer.getCharacter(BigNumber.from(props.id))
 </script>
 
 <template>

@@ -17,7 +17,7 @@ const locked = $ref(false)
 
 let listCharacters: CharacterEntity[] = $ref()
 const selectCharacter = $ref('')
-await indexer.getCharacters(address.value).then((res) => { listCharacters = res.list })
+listCharacters = (await indexer.getCharacters(address.value)).list
 
 let transactionHash = $ref('')
 let noteId: number = $ref()

@@ -13,7 +13,6 @@ const form = reactive({
 let data: number = $ref()
 
 async function createCharacter() {
-  await contract.connect()
   await contract.createCharacter(form.address, form.handle, form.avatar)
     .then((result) => {
       data = result.data
