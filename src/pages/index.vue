@@ -28,9 +28,9 @@ async function connect() {
   if (!hasCharacter.value) {
     await contract.existsCharacterForAddress(address.value).then(async(bool) => {
       await(hasCharacter.value = bool.data)
-      await goWhere()
     })
   }
+  await goWhere()
 }
 </script>
 
