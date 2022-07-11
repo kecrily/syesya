@@ -19,7 +19,7 @@ characters = (await indexer.getCharacters(address.value)).list
       <div class="ml-2 text-xl">
         @{{ c.handle }}
       </div>
-      <a-link class="ml-6" :href="c.characterId.toString()">
+      <a-link class="ml-6" :href="`/character/${c.characterId}`">
         View
       </a-link>
       <a-link>
@@ -30,7 +30,7 @@ characters = (await indexer.getCharacters(address.value)).list
 
   <a-button
     type="primary"
-    href="create"
+    href="/character/create"
   >
     Create New Character
   </a-button>
