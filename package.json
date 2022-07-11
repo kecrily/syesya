@@ -1,5 +1,6 @@
 {
   "name": "syesya",
+  "type": "module",
   "private": true,
   "packageManager": "pnpm@7.5.0",
   "scripts": {

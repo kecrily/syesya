@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import Alias from 'vite-tsconfig-paths'
-import GlobalsPolyfills from '@esbuild-plugins/node-globals-polyfill'
-import NodeModulesPolyfills from '@esbuild-plugins/node-modules-polyfill'
+import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
+import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill'
 
 import Vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
@@ -36,8 +36,8 @@ export default defineConfig({
     esbuildOptions: {
       define: { global: 'globalThis' },
       plugins: [
-        NodeModulesPolyfills(),
-        GlobalsPolyfills({
+        NodeModulesPolyfillPlugin(),
+        NodeGlobalsPolyfillPlugin({
           process: true,
           buffer: true,
         }),
