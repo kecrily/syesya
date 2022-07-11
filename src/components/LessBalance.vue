@@ -7,8 +7,8 @@ balance = (await contract.getBalance(props.address)).data
 </script>
 
 <template v-if="Number(balance) < 0.002">
-  <div class="mt-2">
-    <div class="block">
+  <div>
+    <div>
       You have less than the recommended $CSB, which may not be enough to complete the character creation.
     </div>
     <a-link href="https://faucet.crossbell.io/">

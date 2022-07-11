@@ -3,8 +3,10 @@ await contract.connect()
 </script>
 
 <template>
-  <div class="flex">
-    <div class="flex flex-col mx-auto my-10">
+  <div class="flex flex-row">
+    <Sidebar />
+
+    <div class="p-10 w-full">
       <RouterView />
     </div>
   </div>
