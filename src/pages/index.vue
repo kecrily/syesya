@@ -7,6 +7,8 @@ const store = useStore()
 const { address, hasCharacter, isMainnet } = storeToRefs(store)
 const router = useRouter()
 
+let loading = $ref(false)
+
 function goWhere() {
   if (address.value) {
     if (hasCharacter.value) router.push('/write')
@@ -17,18 +19,21 @@ function goWhere() {
 await goWhere()
 
 async function connect() {
+  await(loading = true)
   await contract.connect()
   const provider = new ethers.providers.Web3Provider(window.ethereum)
   await provider.send('eth_requestAccounts', [])
   const signer = provider.getSigner()
+
   if (!address.value)
     address.value = await signer.getAddress()
   if (!isMainnet.value)
     await Network.switchToCrossbellMainnet(provider).then(() => { isMainnet.value = true })
   if (!hasCharacter.value) {
-    await contract.existsCharacterForAddress(address.value).then(async(bool) => {
-      await(hasCharacter.value = bool.data)
-    })
+    await contract.existsCharacterForAddress(address.value)
+      .then(async(bool) => {
+        await(hasCharacter.value = bool.data)
+      })
   }
   await goWhere()
 }
@@ -42,7 +47,7 @@ async function connect() {
     A markdown editor for Crossbell.
   </div>
 
-  <a-button @click="connect">
+  <a-button :loading="loading" @click="connect">
     Connect Wallet
   </a-button>
 </template>
