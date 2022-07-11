@@ -1,5 +1,7 @@
 <template>
-  <div class="m-auto my-10">
-    <RouterView />
+  <div class="flex">
+    <div class="flex flex-col mx-auto my-10">
+      <RouterView />
+    </div>
   </div>
 </template>

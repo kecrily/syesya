@@ -3,11 +3,9 @@ import { setupLayouts } from 'virtual:generated-layouts'
 import { createRouter, createWebHistory } from 'vue-router'
 import { createPinia } from 'pinia'
 import piniaPersist from 'pinia-plugin-persist'
-
 import App from './App.vue'
-
 import 'uno.css'
-import '@unocss/reset/antfu.css'
+import '~/assets/modern-normalize.css'
 
 const app = createApp(App)
 const routes = setupLayouts(generatedRoutes)

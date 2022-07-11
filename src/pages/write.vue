@@ -42,6 +42,7 @@ async function publish() {
           :value="content" :plugins="plugins"
           @change="handleChange"
         />
+
         <div class="flex flex-row space-x-4">
           <a-input-tag v-model="tags" placeholder="Tags (optional)" allow-clear />
 
@@ -80,7 +81,7 @@ async function publish() {
 <style>
 @import 'bytemd/dist/index.css';
 
-div {
-  display: block;
+.bytemd {
+  z-index: 50;
 }
 </style>
