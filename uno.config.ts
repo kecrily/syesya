@@ -16,12 +16,11 @@ export default defineConfig({
       prefix: '',
       scale: 1.2,
     }),
-    presetTypography({
-      selectorName: 'markdown-body',
-    }),
+    presetTypography(),
   ],
   transformers: [
     transformerVariantGroup(),
     transformerDirectives(),
   ],
+  safelist: 'ri:github-line ri:twitter-line ri:telegram-line'.split(' '),
 })
