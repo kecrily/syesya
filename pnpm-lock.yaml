@@ -6,12 +6,11 @@ specifiers:
   '@bytemd/vue-next': ^1.17.1
   '@esbuild-plugins/node-globals-polyfill': ^0.1.1
   '@esbuild-plugins/node-modules-polyfill': ^0.1.4
-  '@iconify-json/carbon': ^1.1.6
   '@iconify-json/ri': ^1.1.3
   '@kecrily/eslint-config': ^0.1.9
   '@vitejs/plugin-vue': ^3.0.0
   bytemd: ^1.17.1
-  crossbell.js: ^0.10.9
+  crossbell.js: ^0.10.12
   eslint: ^8.19.0
   ethers: ^5.6.9
   pinia: ^2.0.16
@@ -34,7 +33,7 @@ dependencies:
   '@bytemd/plugin-gfm': 1.17.1_bytemd@1.17.1
   '@bytemd/vue-next': 1.17.1_vue@3.2.37
   bytemd: 1.17.1
-  crossbell.js: 0.10.9
+  crossbell.js: 0.10.12
   ethers: 5.6.9
   pinia: 2.0.16_j6bzmzd4ujpabbp5objtwxyjp4
   pinia-plugin-persist: 1.0.0_pinia@2.0.16+vue@3.2.37
@@ -46,7 +45,6 @@ devDependencies:
   '@arco-design/web-vue': 2.33.0_vue@3.2.37
   '@esbuild-plugins/node-globals-polyfill': 0.1.1
   '@esbuild-plugins/node-modules-polyfill': 0.1.4
-  '@iconify-json/carbon': 1.1.6
   '@iconify-json/ri': 1.1.3
   '@kecrily/eslint-config': 0.1.9_4x5o4skxv6sl53vpwefgt23khm
   '@vitejs/plugin-vue': 3.0.0_vite@3.0.0+vue@3.2.37
@@ -546,12 +544,6 @@ packages:
     resolution: {integrity: sha512-1X0DA+1e0R0liYvw+Nb2BQmF1oEo/wS3o/JYkQYifPJXCGYij2vN9sJf/NNhbzDsJWTg4W2bbzZjJvC7Q4w4oQ==}
     engines: {node: '>= 8.0.0', npm: '>= 5.0.0'}
     dev: false
-
-  /@iconify-json/carbon/1.1.6:
-    resolution: {integrity: sha512-3a/D7qzqBO6hsDmp6/k2eFfJzL1sw1yCQOq2yr86el2CzgMmQdKYROOyCCDNBxGn+dkkc/Rx1/8OEciakAJcFg==}
-    dependencies:
-      '@iconify/types': 1.1.0
-    dev: true
 
   /@iconify-json/ri/1.1.3:
     resolution: {integrity: sha512-YQ45kQNpuHc2bso4fDGhooWou43qy7njD/I5l7vpjcujb+P/K2BfLASbWYTTUKu6lMersuFmO8F7NdGzy6eGWw==}
@@ -1838,8 +1830,8 @@ packages:
       which: 2.0.2
     dev: true
 
-  /crossbell.js/0.10.2:
-    resolution: {integrity: sha512-FtoxTeinXcFjLbB5ya/NwyJX3d0VNbeOlj0fCNCpdiOf7+bibQWMkjdhnKpIieDYqt6i2dNfMbeygxhIHLWZkw==}
+  /crossbell.js/0.10.12:
+    resolution: {integrity: sha512-4nxvK/P0WrshdwgUrcou9Iwr6g98WTd6PXlgZ+6+qte2Y8tTpXwqYSsJWXi2oqpP9MlgYxC/fNvsskS1ohAISw==}
     dependencies:
       async-retry: 1.3.3
       ethers: 5.6.9
@@ -1855,8 +1847,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /crossbell.js/0.10.9:
-    resolution: {integrity: sha512-oFI6vBlLscnzHQhBfqd6r2XJ1eMna4lzG5ICtMdZ1ruaM/bskE53IqO7RgXr2aHmWdC0ih+mZL2fMYopt+6TpQ==}
+  /crossbell.js/0.10.2:
+    resolution: {integrity: sha512-FtoxTeinXcFjLbB5ya/NwyJX3d0VNbeOlj0fCNCpdiOf7+bibQWMkjdhnKpIieDYqt6i2dNfMbeygxhIHLWZkw==}
     dependencies:
       async-retry: 1.3.3
       ethers: 5.6.9
