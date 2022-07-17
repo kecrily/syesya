@@ -49,6 +49,7 @@ declare global {
   const onServerPrefetch: typeof import('vue')['onServerPrefetch']
   const onUnmounted: typeof import('vue')['onUnmounted']
   const onUpdated: typeof import('vue')['onUpdated']
+  const parseCsbUri: typeof import('../composables/csbUri')['parseCsbUri']
   const provide: typeof import('vue')['provide']
   const provider: typeof import('../composables/crossbell')['provider']
   const reactive: typeof import('vue')['reactive']

@@ -29,12 +29,8 @@ async function connect() {
     address.value = await signer.getAddress()
   if (!isMainnet.value)
     await Network.switchToCrossbellMainnet(provider).then(() => { isMainnet.value = true })
-  if (!hasCharacter.value) {
-    await contract.existsCharacterForAddress(address.value)
-      .then(async(bool) => {
-        hasCharacter.value = bool.data
-      })
-  }
+  if (!hasCharacter.value)
+    ({ data: hasCharacter.value } = await contract.existsCharacterForAddress(address.value))
   goWhere()
 }
 </script>

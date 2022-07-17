@@ -22,18 +22,15 @@ listCharacters = (await indexer.getCharacters(address.value)).list
 let transactionHash = $ref('')
 let noteId: number = $ref()
 async function publish() {
-  await contract.connect()
+  await contract.connect();
 
-  await contract.postNote(selectCharacter, { title, content, tags }, { locked })
-    .then((res) => {
-      transactionHash = res.transactionHash
-      noteId = res.data.noteId
-    })
+  ({ transactionHash, data: { noteId } }
+    = await contract.postNote(selectCharacter, { title, content, tags }, { locked }))
 }
 </script>
 
 <template>
-  <a-space size="medium" direction="vertical" fill>
+  <div class="space-y-2">
     <a-input v-model="title" placeholder="Title (optional)" />
 
     <Editor
@@ -59,7 +56,7 @@ async function publish() {
         Publish
       </a-button>
     </div>
-  </a-space>
+  </div>
 
   <div v-if="noteId" class="flex flex-col text-lg mt-6">
     Published successfully.
