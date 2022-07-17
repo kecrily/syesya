@@ -5,7 +5,6 @@ import { createPinia } from 'pinia'
 import piniaPersist from 'pinia-plugin-persist'
 import App from './App.vue'
 import 'uno.css'
-import '~/assets/modern-normalize.css'
 
 const app = createApp(App)
 const routes = setupLayouts(generatedRoutes)

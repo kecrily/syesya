@@ -13,11 +13,8 @@ const form = reactive({
 let data: number = $ref()
 
 async function createCharacter() {
-  await contract.createCharacter(form.address, form.handle, form.avatar)
-    .then((result) => {
-      data = result.data
-      hasCharacter.value = true
-    })
+  data = (await contract.createCharacter(form.address, form.handle, form.avatar)).data
+  hasCharacter.value = true
 }
 </script>
 
@@ -64,9 +61,7 @@ async function createCharacter() {
     </div>
   </a-card>
 
-  <template v-if="data">
-    <a-button href="/write" type="primary" class="mt-4">
-      Go to write
-    </a-button>
-  </template>
+  <a-button v-if="data" href="/write" type="primary" class="mt-4">
+    Go to write
+  </a-button>
 </template>

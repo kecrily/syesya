@@ -16,10 +16,10 @@ function goWhere() {
   }
 }
 
-await goWhere()
+goWhere()
 
 async function connect() {
-  await(loading = true)
+  loading = true
   await contract.connect()
   const provider = new ethers.providers.Web3Provider(window.ethereum)
   await provider.send('eth_requestAccounts', [])
@@ -32,10 +32,10 @@ async function connect() {
   if (!hasCharacter.value) {
     await contract.existsCharacterForAddress(address.value)
       .then(async(bool) => {
-        await(hasCharacter.value = bool.data)
+        hasCharacter.value = bool.data
       })
   }
-  await goWhere()
+  goWhere()
 }
 </script>
 
