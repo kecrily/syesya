@@ -17,6 +17,7 @@ export interface csbUri {
 
 export function resolveIpfsLink(link: string | undefined) {
   if (!link) return undefined
+  if (link.startsWith('https://') || link.startsWith('http://')) return link
   return `https://gateway.ipfs.io/${link.replace('://', '/')}`
 }
 

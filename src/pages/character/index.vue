@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { CharacterEntity } from '~/composables/crossbell'
+import { resolveIpfsLink } from '~/composables/crossbell'
 import { useStore } from '~/stores/wallet'
 
 const store = useStore()
@@ -13,8 +14,8 @@ characters = (await indexer.getCharacters(address.value)).list
 <template>
   <a-card v-for="c in characters" :key="c.handle" hoverable class="mb-4 w-1/3">
     <div class="flex flex-row items-center">
-      <a-avatar v-if="c.uri">
-        <img alt="avatar" :src="c.uri">
+      <a-avatar v-if="c.metadata?.content?.avatars?.[0]">
+        <img alt="avatar" :src="resolveIpfsLink(c.metadata?.content?.avatars?.[0])">
       </a-avatar>
       <div class="ml-2 text-xl">
         @{{ c.handle }}
