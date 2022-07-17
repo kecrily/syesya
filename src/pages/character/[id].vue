@@ -7,7 +7,6 @@ const props = defineProps<{ id: number|string }>()
 let character: CharacterEntity|null = $ref()
 let notes: NoteEntity[] = $ref()
 
-await contract.connect()
 character = await indexer.getCharacter(BigNumber.from(props.id))
 
 const social = character?.metadata?.content.connected_accounts
@@ -55,16 +54,14 @@ notes = (await indexer.getNotes({ characterId: props.id })).list
         ↩
       </a>
 
-      <!--
       <a-carousel v-if="n.metadata?.content.attachments?.length" class="mt-2 h-60 w-150">
         <a-carousel-item
           v-for="a in n.metadata?.content.attachments" :key="a.name"
           class="rounded"
         >
-          <img :src="resolveIpfsLink(a.address)" class="w-full">
+          <a-image :src="resolveIpfsLink(a.address)" width="100%" />
         </a-carousel-item>
       </a-carousel>
-      -->
     </article>
   </div>
 </template>
