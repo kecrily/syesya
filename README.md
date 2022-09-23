@@ -1,3 +1,7 @@
+> Check out **[xLog](https://github.com/Crossbell-Box/xLog)** for a well-maintained, Crossbell official launch product.
+
+<details>
+
 # SyeSya <img align="right" valign="center" height="52" width="52" src="./public/favicon.svg" alt="SyeSya logo" />
 
 > A markdown editor for [Crossbell](https://crossbell.io/).
@@ -24,3 +28,4 @@ SyeSya is derived from the Yale Romanization for the Chinese word for "write dow
 ## License
 
 **SyeSya** © [Percy Ma](https://github.com/kecrily), Released under [MIT License](LICENSE).
+</details>
